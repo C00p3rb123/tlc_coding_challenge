@@ -177,5 +177,6 @@
   .circle {
     height: 25px;
     width: 25px;
+    font-size: small;
   }
 }
