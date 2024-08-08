@@ -5,7 +5,7 @@ import PowerballNumber from "./PowerballNumber";
 import PowerballNumberPanel from "./PowerballNumberPanel";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { PiLightning } from "react-icons/pi";
-
+import PowerballDrawnNumber from "./PowerBallDrawnNumber";
 
 export default function Powerball() {
   const powerballTitle = "SELECT YOUR POWERBALL";
@@ -31,11 +31,10 @@ export default function Powerball() {
     new Array(7).fill(0)
   );
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [drawnNumber, setDrawNumber] = useState<number>()
+  const [drawnNumber, setDrawNumber] = useState<number>();
   const [powerballNumber, setPowerballNumber] = useState<number>(0);
   const [showNumbers, setShowNumbers] = useState<boolean>(false);
   const [isError, setError] = useState<boolean>(false);
-
 
   useEffect(() => {
     const fetchPowerball = async () => {
@@ -67,24 +66,25 @@ export default function Powerball() {
         <div>Loading....</div>
       ) : (
         <div className="powerballRoot">
-            <div className="logo"><img className="x" src={require("../assets/powerballlogo.png")}/><span>{`Draw ${drawnNumber}`}</span></div>           
+          <div className="logo">
+            <img className="x" src={require("../assets/powerballlogo.png")} />
+            <span>{`Draw ${drawnNumber}`}</span>
+          </div>
           <div className="drawnNumbersPanel">
-            <PowerballNumberPanel
-              drawnPrimaryNumbers={drawnPrimaryNumbers}
-              powerballNumber={powerballNumber}
-              hidden={!showNumbers}
-            />
+            <div className="drawnNumbers">
+            {drawnPrimaryNumbers.map((n) => (
+              <PowerballDrawnNumber centerComponent={n} hidden={showNumbers} className={showNumbers ? "circle primaryNumbers": "circle"}  />
+            ))}
+            <PowerballDrawnNumber centerComponent={showNumbers ? powerballFiller : powerballNumber} hidden={showNumbers} className={showNumbers? "circle powerball":"circle"} />
+            </div>
+           
             <div id="powerballButtons">
-              <div onClick={() => setShowNumbers(true)} id="lightningButton">
+              <div onClick={() => setShowNumbers(true)} className="circle lightningButton">
                 <span>
                   <PiLightning />
                 </span>
               </div>
-              <div
-                onClick={() => setShowNumbers(false)}
-                id="trashbutton"
-                style={{ backgroundColor: "rgb(118, 118, 118)" }}
-              >
+              <div onClick={() => setShowNumbers(false)} className="circle trashbutton">
                 <FaRegTrashAlt />
               </div>
             </div>

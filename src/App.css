@@ -4,14 +4,16 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgb(54, 83, 164)
- 
+  background-color: rgb(54, 83, 164);
+  padding-left: 10px;
+  padding-right: 10px;
+  flex: 0 0;
 }
-.error{
+.error {
   color: red;
   font-size: large;
 }
-.loading{
+.loading {
   display: flex;
   height: 50vh;
   justify-content: center;
@@ -20,78 +22,96 @@
 .logo {
   display: flex;
   height: 10%;
-  width: 50%;
+  width: 800px;
   align-items: center;
   justify-content: space-between;
   padding-bottom: 10px;
   color: white;
-  
+  font-size: x-large;
+  font-weight: bold;
 }
-.x{
+.x {
   width: 50%;
   object-fit: scale-down;
 }
-  
+
 .drawnNumbersPanel {
   height: 10%;
   display: flex;
-  width: 50%;
+  width: 800px;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: 40px;
   background-color: white;
 }
 .drawnNumbers {
   display: flex;
-  width: 50%;  
-  gap: 5px;
-  font-weight: bold;
+  gap:5px
 }
-.drawnNumbersCircle{
-  width: 100%;
+.circle {
+  height: 50px;
+  width: 50px;
   border-radius: 50%;
-  border-style: solid;
-  border-color: rgb(191, 191, 191);
-  box-shadow:  0 3px 5px 0 rgba(0, 0, 0, .2) inset;
-  flex: 0 0 10%;
-  text-align: center;
-  line-height: 0px;
-}
-.circle{
-  height: 30px;
-  width: 30px;
-  border-radius: 50%;
-  display: flex; 
+  display: flex;
   justify-content: center;
   align-items: center;
-  background-color: aquamarine;
+  border-style: solid;
+  border-color: rgb(191, 191, 191);
+  color: white;
+  box-shadow: 0 3px 8px 0 rgba(48, 47, 47, 0.4) inset;
+  font-size: x-large;
+  font-weight: bold;
+}
+.circle:onclick{
+  border-color: rgb(54, 83, 164);
 }
 
-.drawnNumbersCircle span{
-  padding-top: 50%;
-  padding-bottom: 50%;
-  display: inline-block;
-  color: black;
-}
 .powerball {
   background-color: rgb(106, 120, 132);
-  border: none;
-  color: white !important;
-  visibility: visible;
+  border-style: solid;
+  border-color: rgb(106, 120, 132);
+  box-shadow: none;  
+  
 }
+
 .primaryNumbers {
   background-color: rgb(54, 83, 164);
-  border: none;
-  color: white !important;
-  visibility: visible;
+  border-style: solid;
+  border-color: rgb(54, 83, 164);
+  box-shadow: none; 
 }
 .hidden {
   visibility: hidden;
 }
+#powerballButtons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+
+}
+.lightningButton {
+  background-color: rgb(153, 81, 219);
+  border-color: rgb(153, 81, 219) ;
+  
+  border-style: solid;
+  box-shadow: none;
+  
+}
+.trashbutton {
+  background-color: rgb(118, 118, 118);
+  
+  border-style: solid;
+  border-color: rgb(118, 118, 118);
+  box-shadow: none;
+}
+
+
 .numberSelection {
   display: flex;
   flex-wrap: wrap;
-  flex: 0 0 10%;
-  width: 50%;
+  width: 800px;
   background-color: white;
   padding-top: 5px;
   padding-bottom: 10px;
@@ -102,7 +122,6 @@
   color: rgb(97, 18, 190);
   text-align: center;
   font-weight: bold;
- 
 }
 .numberShow {
   background-color: rgb(241, 231, 250);
@@ -111,37 +130,52 @@
   background-repeat: no-repeat;
   background-position: center;
 }
-#powerballHeader{
-  background-color: rgb(106, 120, 132) ;
+#powerballHeader {
+  background-color: rgb(106, 120, 132);
   color: white;
-  width: 50%;
+  width: 800px;
   padding-top: 5px;
   padding-bottom: 5px;
   text-align: center;
   font-weight: bold;
   font-size: small;
 }
-#powerballButtons {
- display: flex;
- gap: 10px;
- width: 20%;
-}
-#lightningButton{
-  border-radius: 50%;
-  flex: 0 0 40%;
-  text-align: center;
-  padding-top: 5%;
-  padding-bottom: 5%;
-  background-color: rgb(153, 81, 219);
-  color: white;
-  
-}
-#trashbutton{
-  border-radius: 50%;
-  padding-top: 5%;
-  padding-bottom: 5%;
-  background-color: rgb(118, 118, 118);
-  color: white;
-  flex: 0 0 40%;
-  text-align: center;
+
+
+@media (max-width: 800px) {
+  .logo {
+    width: 80%;
+    height: auto;
+  }
+
+  .numberSelection {
+    width: 80%;
+  }
+  .numberShow {
+    background-size: contain;
+  }
+  .drawnNumbersPanel {
+    width: 80%;
+    flex-wrap: wrap;
+    gap: 0px;
+    padding-bottom: 5px;
+    justify-content: flex-start;
+  }
+  #powerballHeader {
+    width: 80%;
+  }
+  .number {
+    flex: 0 0 10%;
+    padding: 5px;
+    font-size: small;
+  }
+  .drawnNumbers {
+    flex-wrap: wrap;
+    padding-top: 3px;
+    padding-left: 5px;
+  }
+  .circle {
+    height: 25px;
+    width: 25px;
+  }
 }
