@@ -9,7 +9,7 @@ import {
 } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import Powerball from "../src/components/Powerball";
-import { PowerBallResponse } from "../src/types/powerballResponse";
+import { PowerBallResponse } from "../src/types/PowerballResponse";
 import { mockApiResponse } from "./mocks/apiMock";
 
 const mockDrawResults: PowerBallResponse = mockApiResponse;

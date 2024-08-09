@@ -2,26 +2,11 @@ import React, { useEffect, useState } from "react";
 
 type props = {
   number: number;
-  isSelected: boolean;
+  className: string;
 };
-const enum numberStyles {
-  selected = `number numberShow`,
-  notSelected = `number`,
-}
-
-export default function PowerballNumber(props: props) {
-  const [numberStyle, setNumberStyle] = useState<numberStyles>();
-  const isSelected = props.isSelected;
-  const number = props.number;
-  useEffect(() => {
-    if (isSelected) {
-      setNumberStyle(numberStyles.selected);
-      return;
-    }
-    setNumberStyle(numberStyles.notSelected);
-
-  }, [isSelected]);
+export default function PowerballNumber(props: props) { 
+  const {className, number} = props 
   return (    
-      <div className={numberStyle}>{number}</div>
+      <div className={className}>{number}</div>
   );
 }

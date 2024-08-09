@@ -1,4 +1,10 @@
-.powerballRoot {
+:root {
+  --desktop-width: 800px;
+  --mobile-width: 80%;
+  --white: rgb(255,255,255)
+}
+
+.powerballContainer {
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -11,7 +17,14 @@
 }
 .error {
   color: red;
-  font-size: large;
+  font-size: x-large;
+  font-weight: bold;
+  background-color: var(--white);
+  width: var(--desktop-width);
+  margin-top: 10px;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 .loading {
   display: flex;
@@ -19,18 +32,18 @@
   justify-content: center;
   align-items: flex-end;
 }
-.logo {
+.logoContainer {
   display: flex;
   height: 10%;
-  width: 800px;
+  width: var(--desktop-width);
   align-items: center;
   justify-content: space-between;
   padding-bottom: 10px;
-  color: white;
+  color: var(--white);;
   font-size: x-large;
   font-weight: bold;
 }
-.x {
+.logo {
   width: 50%;
   object-fit: scale-down;
 }
@@ -38,15 +51,15 @@
 .drawnNumbersPanel {
   height: 10%;
   display: flex;
-  width: 800px;
+  width: var(--desktop-width);
   align-items: center;
   justify-content: center;
   gap: 40px;
-  background-color: white;
+  background-color: var(--white);
 }
 .drawnNumbers {
   display: flex;
-  gap:5px
+  gap: 5px;
 }
 .circle {
   height: 50px;
@@ -57,28 +70,25 @@
   align-items: center;
   border-style: solid;
   border-color: rgb(191, 191, 191);
-  color: white;
+  color: black;
   box-shadow: 0 3px 8px 0 rgba(48, 47, 47, 0.4) inset;
   font-size: x-large;
   font-weight: bold;
-}
-.circle:onclick{
-  border-color: rgb(54, 83, 164);
 }
 
 .powerball {
   background-color: rgb(106, 120, 132);
   border-style: solid;
   border-color: rgb(106, 120, 132);
-  box-shadow: none;  
-  
+  box-shadow: none;
+  color: var(--white);
 }
-
-.primaryNumbers {
+.primaryNumbersCircle {
   background-color: rgb(54, 83, 164);
   border-style: solid;
   border-color: rgb(54, 83, 164);
-  box-shadow: none; 
+  box-shadow: none;
+  color: var(--white);
 }
 .hidden {
   visibility: hidden;
@@ -89,51 +99,48 @@
   gap: 10px;
   padding-left: 5px;
   padding-right: 5px;
-
 }
 .lightningButton {
   background-color: rgb(153, 81, 219);
-  border-color: rgb(153, 81, 219) ;
-  
+  border-color: rgb(153, 81, 219);
   border-style: solid;
   box-shadow: none;
-  
+  color: var(--white);
 }
 .trashbutton {
   background-color: rgb(118, 118, 118);
-  
   border-style: solid;
   border-color: rgb(118, 118, 118);
   box-shadow: none;
+  color: var(--white);
 }
 
-
-.numberSelection {
+.purplenumbercontainer {
   display: flex;
   flex-wrap: wrap;
-  width: 800px;
-  background-color: white;
+  width: var(--desktop-width);
+  background-color: var(--white);
   padding-top: 5px;
   padding-bottom: 10px;
   font-size: xx-large;
 }
-.number {
+.purplenumber {
   flex: 0 0 10%;
   color: rgb(97, 18, 190);
   text-align: center;
   font-weight: bold;
 }
-.numberShow {
+.showCross {
   background-color: rgb(241, 231, 250);
   background-image: url("../src/assets/vecteezy_rejected-sign-and-symbol-clip-art_22068709.png");
   background-size: 75% 75%;
   background-repeat: no-repeat;
   background-position: center;
 }
-#powerballHeader {
+#pickpowerball {
   background-color: rgb(106, 120, 132);
-  color: white;
-  width: 800px;
+  color: var(--white);
+  width: var(--desktop-width);
   padding-top: 5px;
   padding-bottom: 5px;
   text-align: center;
@@ -141,30 +148,27 @@
   font-size: small;
 }
 
-
 @media (max-width: 800px) {
-  .logo {
-    width: 80%;
-    height: auto;
+  .logoContainer,
+  .purplenumbercontainer,
+  #pickpowerball,
+  .drawnNumbersPanel,
+  .error {
+    width: var(--mobile-width);
   }
 
-  .numberSelection {
-    width: 80%;
-  }
-  .numberShow {
+  .showCross {
     background-size: contain;
   }
   .drawnNumbersPanel {
-    width: 80%;
+    width: var(--mobile-width);
     flex-wrap: wrap;
     gap: 0px;
     padding-bottom: 5px;
     justify-content: flex-start;
   }
-  #powerballHeader {
-    width: 80%;
-  }
-  .number {
+
+  .purplenumber {
     flex: 0 0 10%;
     padding: 5px;
     font-size: small;
@@ -178,5 +182,9 @@
     height: 25px;
     width: 25px;
     font-size: small;
+  }
+  .error {
+    width: var(--mobile-width);
+    font-size: medium;
   }
 }
