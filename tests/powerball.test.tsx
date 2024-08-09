@@ -10,7 +10,7 @@ import {
 import "@testing-library/jest-dom/extend-expect";
 import Powerball from "../src/components/Powerball";
 import { PowerBallResponse } from "../src/types/PowerballResponse";
-import { mockApiResponse } from "./mocks/apiMock";
+import { mockApiResponse } from "../mocks/apiMock";
 
 const mockDrawResults: PowerBallResponse = mockApiResponse;
 
@@ -21,6 +21,7 @@ beforeEach(() => {
       json: () => Promise.resolve(mockDrawResults),
     })
   ) as jest.Mock;
+  jest.mock("../assets/powerballlogo.png")
 });
 
 describe("Testing the different rendering situations the powerball component will encounter", () => {
@@ -28,8 +29,9 @@ describe("Testing the different rendering situations the powerball component wil
     const { container } = render(<Powerball />);
     await waitForElementToBeRemoved(() => screen.getByText("Loading...."));
     const powerballNumbers = container.querySelector(".hidden");
-    const primaryNumbers = container.querySelector(".number");
-    const lightningButton = container.querySelector("#lightningButton");
+    const primaryNumbers = container.querySelector(".purplenumber");
+    const lightningButton = container.querySelector(".lightningButton");
+
     expect(powerballNumbers).toBeInTheDocument();
     expect(powerballNumbers?.textContent).toBe("30");
     expect(primaryNumbers).toBeInTheDocument();
@@ -40,11 +42,11 @@ describe("Testing the different rendering situations the powerball component wil
   test("clicking the lightning icon should display the powerball numbers", async () => {
     const { container } = render(<Powerball />);
     await waitForElementToBeRemoved(() => screen.getByText("Loading...."));
-    const lightningButton = container.querySelector("#lightningButton");
-    const primaryNumbers = container.querySelector(".number");
+    const lightningButton = container.querySelector(".lightningButton");
+    const primaryNumbers = container.querySelector(".purplenumber");
     fireEvent.click(lightningButton!);
     const powerballNumbers = container.querySelector(
-      ".drawnNumbersCircle.primaryNumbers"
+      ".circle.primaryNumbersCircle"
     );
     expect(powerballNumbers).toBeInTheDocument();
   });
@@ -52,13 +54,13 @@ describe("Testing the different rendering situations the powerball component wil
   test("clicking the trash icon should clear the powerball numbers", async () => {
     const { container } = render(<Powerball />);
     await waitForElementToBeRemoved(() => screen.getByText("Loading...."));
-    const lightningButton = container.querySelector("#lightningButton");
+    const lightningButton = container.querySelector(".lightningButton");
     fireEvent.click(lightningButton!);
     const powerballNumbers = container.querySelector(
-      ".drawnNumbersCircle.primaryNumbers"
+      ".circle.primaryNumbersCircle"
     );
     expect(powerballNumbers).toBeInTheDocument();
-    const clearButton = container.querySelector("#trashbutton");
+    const clearButton = container.querySelector(".trashbutton");
     fireEvent.click(clearButton!);
     const powerballNumbersHidden = container.querySelector(".hidden");
     expect(powerballNumbersHidden).toBeInTheDocument();

@@ -1,4 +1,4 @@
-import { PowerBallResponse } from "../../src/types/powerballResponse"
+import { PowerBallResponse } from "../src/types/PowerballResponse"
 export const mockApiResponse: PowerBallResponse = {
     "DrawResults": [
         {

@@ -5,6 +5,7 @@ import PowerballNumber from "./PowerballNumber";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { PiLightning } from "react-icons/pi";
 import PowerballDrawnNumber from "./PowerBallDrawnNumber";
+import powerballlogo from "../assets/powerballlogo.png";
 
 export default function Powerball() {
   //Constants
@@ -75,7 +76,7 @@ export default function Powerball() {
       ) : (
         <div className="powerballContainer">
           <div className="logoContainer">
-            <img className="logo" src={require("../assets/powerballlogo.png")} />
+            <img className="logo" src={powerballlogo} alt="powerball logo" />
             {drawNumber && <span>Draw {drawNumber}</span>}
           </div>
           <div className="drawnNumbersPanel">

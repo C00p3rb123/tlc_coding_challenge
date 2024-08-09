@@ -156,6 +156,10 @@
   .error {
     width: var(--mobile-width);
   }
+  .powerballContainer{
+    justify-content: flex-start;
+    padding-top: 15px;
+  }
 
   .showCross {
     background-size: contain;
